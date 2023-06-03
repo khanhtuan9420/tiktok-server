@@ -1,5 +1,5 @@
 const allowedOrigins = [
-    'https://www.yoursite.com',
+    'https://khanhtuan-tiktok.vercel.app',
     'http://localhost:5500',
     'http://localhost:3500',
     'http://localhost:3000'
