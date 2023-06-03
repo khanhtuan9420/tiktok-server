@@ -6,10 +6,11 @@ function Connection() {
   this.init = function() {
     this.pool = mysql.createPool({
       connectionLimit: 10,
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'tiktok',
+      host: 'sql12.freesqldatabase.com',
+      user: 'sql12623446',
+      password: 'pRVzcPvYyx',
+      database: 'sql12623446',
+      port: '3306',
       charset: 'utf8mb4',
       collation: 'utf8mb4_turkish_ci'
     });

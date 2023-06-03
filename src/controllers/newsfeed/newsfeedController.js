@@ -30,6 +30,7 @@ const handleNewsFeed = (req, res) => {
     connection.acquire(function (err, con) {
         con.query(query, function (err, result) {
             con.release();
+            console.log(con)
             res.send(result);
         });
     });
