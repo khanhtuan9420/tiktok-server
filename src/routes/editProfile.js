@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // const fileUploader = require('../config/cloudinaryImage.config');
-const connectionAsync = require('../service/connect');
-const useQuery = require('../service/query');
+const pool = require('../service/mySql2')
 const {checkType, uploadImageCloud, uploadVideoCloud, deleteFile} = require('../config/cloudinary.config')
 
 router.post('/', (req, res, next) => {
@@ -27,8 +26,8 @@ router.post('/', (req, res, next) => {
             updateData = {...updateData, avatar: req.file.path}
         }
         var query = `update user set ? where nickname = ?`
-        const conn = await connectionAsync().catch(e => { })
-        const results = await useQuery(conn, query, [updateData, oldNickname]).catch(console.log);
+        const conn = await pool
+        const results = await conn.query(query, [updateData, oldNickname])
         res.json({ message: "success" });
     });
 });

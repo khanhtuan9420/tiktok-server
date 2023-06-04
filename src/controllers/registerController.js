@@ -1,15 +1,14 @@
 const bcrypt = require('bcrypt');
 const connection = require('../service/sql')
-const connectionAsync = require('../service/connect');
-const useQuery = require('../service/query');
+const pool =  require('../service/mySql2')
 
 
 const handleNewUser = async (req, res) => {
     const { user, pwd, fullName } = req.body;
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password must be provided' });
     var query = `select * from user where nickname = '${user}';`
-    const conn = await connectionAsync  ().catch(e => {}) 
-    const results = await useQuery(conn, query).catch(console.log);
+    const conn = await pool
+    const results = await conn.execute(query)
     if(!!results[0]) return res.sendStatus(409);
     try {
         const hashedPwd = await bcrypt.hash(pwd, 10);

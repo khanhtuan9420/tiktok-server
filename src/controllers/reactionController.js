@@ -1,5 +1,5 @@
-const connectionAsync = require('../service/connect');
-const useQuery = require('../service/query');
+
+const pool =  require('../service/mySql2')
 
 
 const handleLike = async (req, res) => {
@@ -8,16 +8,16 @@ const handleLike = async (req, res) => {
         videoId: req.body.videoId
     }
     var query = `insert into reaction set ?`
-    const conn = await connectionAsync  ().catch(e => {}) 
-    const results = await useQuery(conn, query, insertVals).catch(console.log);
+    const conn = await pool
+    const results = await conn.query(query, [insertVals])
     res.send('success')
 }
 
 const handleDislike = async (req, res) => {
     const {userId, videoId} = req.body
     var query = `delete from reaction where userId = ${userId} and videoId = ${videoId}`
-    const conn = await connectionAsync  ().catch(e => {console.log(e)}) 
-    const results = await useQuery(conn, query).catch(console.log);
+    const conn = await pool
+    const results = await conn.execute(query)
     res.send('success')
 }
 
