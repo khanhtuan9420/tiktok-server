@@ -86,7 +86,7 @@ const server = http.createServer(app);
 
 const socketIo = require("socket.io")(server, {
     cors: {
-        origin: "*",
+        origin: "https://khanhtuan-tiktok.vercel.app",
     }
   }); 
   // nhớ thêm cái cors này để tránh bị Exception nhé :D  ở đây mình làm nhanh nên cho phép tất cả các trang đều cors được. 
