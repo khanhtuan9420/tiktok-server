@@ -82,11 +82,11 @@ app.get('/', (req, res) => {
 })
 
 
-const server = http.createServer(app);
+const server = http.createServer(app)
 
 const socketIo = require("socket.io")(server, {
     cors: {
-        origin: "https://khanhtuan-tiktok.vercel.app",
+        origin: "*",
     }
   }); 
   // nhớ thêm cái cors này để tránh bị Exception nhé :D  ở đây mình làm nhanh nên cho phép tất cả các trang đều cors được. 
@@ -123,7 +123,7 @@ socketIo.on("connection", (socket) => { ///Handle khi có connect từ client t�
   });
 });
 
-server.listen(3000, () => {
+server.listen(5501, () => {
   console.log('Server đang chay tren cong 3000');
 });
 
