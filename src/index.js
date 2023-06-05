@@ -82,7 +82,7 @@ app.get('/', (req, res) => {
 })
 
 
-const server = http.createServer(app)
+const server = http.Server(app)
 
 const socketIo = require("socket.io")(server, {
     cors: {
@@ -123,12 +123,6 @@ socketIo.on("connection", (socket) => { ///Handle khi có connect từ client t�
   });
 });
 
-server.listen(5501, () => {
+server.listen(port, () => {
   console.log('Server đang chay tren cong 3000');
 });
-
-// app.use(verifyJWT)
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
