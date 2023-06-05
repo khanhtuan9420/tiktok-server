@@ -17,7 +17,7 @@ const handleRefreshToken = async (req, res) => {
                 refreshToken,
                 process.env.REFRESH_TOKEN_SECRET,
                 (err, decoded) => {
-                    if(err || myRes.id !== decoded.id) {
+                    if(err || (myRes?.id && myRes.id !== decoded.id)) {
                         console.log(myRes.id, decoded.id)
                         return res.sendStatus(403);
                     }
