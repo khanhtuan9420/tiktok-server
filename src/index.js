@@ -93,7 +93,7 @@ const socketIo = require("socket.io")(server, {
 
 
 socketIo.on("connection", (socket) => { ///Handle khi có connect từ client tới
-  // console.log("New client connected " + socket.id); 
+  console.log("New client connected " + socket.id); 
   
   socket.on("subscribe", (room) => {
     // console.log(`Client subscribe room ${room}`)
