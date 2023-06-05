@@ -123,7 +123,7 @@ socketIo.on("connection", (socket) => { ///Handle khi có connect từ client t�
   });
 });
 
-server.listen(443, () => {
+server.listen(process.env.WDS_SOCKET_PORT, () => {
   console.log('Server đang chay tren cong 3000');
 });
 
